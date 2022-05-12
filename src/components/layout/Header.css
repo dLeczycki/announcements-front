@@ -1,0 +1,22 @@
+.Header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+  padding: .6em;
+  color: white;
+  background-color: #6200EE;
+}
+
+.Header__Heading{
+  font-size: 1.4rem;
+}
+
+.Search{
+  display: flex;
+  width: 15em;
+}
+
+.Search__Input{
+  flex-grow: 1;
+}

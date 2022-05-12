@@ -1,0 +1,12 @@
+.Button{
+  padding: .4em 1em;
+  font-size: .8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: white;
+  background-color: #2A913E;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
