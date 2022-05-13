@@ -2,3 +2,7 @@
   height: var(--map-height);
   background-color: #aaa;
 }
+
+.leaflet-container{
+  height: 100%;
+}
