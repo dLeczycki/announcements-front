@@ -1,18 +1,27 @@
 
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import '../../utils/fix-map-icon';
+import {SimpleAnnouncementEntity} from 'types';
 
-import { SearchContext } from 'src/contexts/search.context';
+import { SearchContext } from '../../contexts/search.context';
 
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
+import { SingleAnnouncement } from './SingleAnnouncement';
 
 export const Map = () => {
   const {search} = useContext(SearchContext);
+  const [announcements, setAnnouncements] = useState<SimpleAnnouncementEntity[]>([]);
 
   useEffect(() => {
-    console.log('Make request for search');
+
+    (async () => {
+      const res = await fetch(`http://localhost:3001/announcement/search/${search}`);
+      const announcements = await res.json();
+      setAnnouncements(announcements);
+    })();
+
   }, [search]);
   
   return (
@@ -22,12 +31,15 @@ export const Map = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
           />
-          <Marker position={[51.9668421,20.1501398]}>
-            <Popup>
-              <h2>Skierniewice Railway Station</h2>
-              <p>Place never to forget.. </p>
-            </Popup>
-          </Marker>
+          {
+            announcements.map(announcement => (
+              <Marker key={announcement.id} position={[announcement.lat,announcement.lon]}>
+                <Popup>
+                  <SingleAnnouncement id={announcement.id}/>
+                </Popup>
+              </Marker>
+            ))
+          }          
         </MapContainer>
     </div>
   )

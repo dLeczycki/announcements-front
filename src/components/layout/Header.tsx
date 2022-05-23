@@ -1,6 +1,7 @@
 
 import { SyntheticEvent, useContext, useState } from 'react';
-import { SearchContext } from 'src/contexts/search.context';
+import { SearchContext } from '../../contexts/search.context';
+
 import { Button } from '../common/Button';
 import './Header.css';
 
