@@ -18,7 +18,7 @@ export const Header = () => {
   return (
     <header className="Header">
       <h1 className="Header__Heading">Announcements</h1>
-      <Button text="Add announcement"/>
+      <Button to="/add" text="Add announcement"/>
       <form className="Search" onSubmit={e => handleSubmit(e)}>
         <input className="Search__Input" type="text" value={inputVal} onChange={e => setInputVal(e.target.value)} />
         <Button text="Search"/>
