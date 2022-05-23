@@ -14,3 +14,9 @@
 .Button--Link{
   text-decoration: none;
 }
+
+.Button--FormButton{
+  padding: 10px;
+  width: 100%;
+
+}
